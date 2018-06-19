@@ -10,7 +10,7 @@ def login_page(request):
             login(request, user)
             return redirect('/home')
         else:
-            return redirect('/login?e=1')
+            return redirect('/login')
     else:
         return render(request, 'r2n2/login.html')
 
