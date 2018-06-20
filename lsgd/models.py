@@ -4,7 +4,6 @@ from django.db import models
 from django.contrib import admin
 
 # Create your models here.
-
 class District(models.Model):
     district_code = models.CharField(max_length = 10, unique = True, primary_key=True)
     district_name = models.CharField(max_length = 50, unique = True)
