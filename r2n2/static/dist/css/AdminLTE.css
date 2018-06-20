@@ -3237,6 +3237,8 @@ table.text-center th {
 .login-page,
 .register-page {
   background: #d2d6de;
+/*background: url("/static/cat.png") no-repeat center center fixed;
+background-size: cover;*/
 }
 .login-box,
 .register-box {
