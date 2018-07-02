@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'logn',
     'lsgd',
     'qbnk',
+    'data',
 ]
 
 MIDDLEWARE = [
