@@ -4,5 +4,8 @@ from django.conf.urls import url
 from data import views
 
 urlpatterns = [
-    url(r'^test/$', views.test_page),
+    url(r'^gdls/$', views.gdls_page),
+    url(r'^demp/$', views.demp_page),
+    url(r'^sddc/$', views.sddc_page),
+
 ]

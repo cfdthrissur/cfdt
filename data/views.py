@@ -7,7 +7,7 @@ from data.models import D01_GeneralDetails
 from data.forms import DataForm01
 
 # Create your views here.
-def test_page(request):
+def gdls_page(request):
     lsgd_code = 'KL008M001'
     data_entry_year = 2018
     current_user = request.user
@@ -30,12 +30,16 @@ def test_page(request):
             data01.lsgd_area_in_sqkm = data_form01.cleaned_data['lsgd_area_in_sqkm']
             data01.lsgd_taluk_name = data_form01.cleaned_data['lsgd_taluk_name']
             data01.lsgd_no_of_wards = data_form01.cleaned_data['lsgd_no_of_wards']
+            data01.lsgd_block_panchayath_wards = data_form01.cleaned_data['lsgd_block_panchayath_wards']
             data01.save()
 
     else:
         print("testing..")
 
-    return render(request, 'r2n2/test.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
+    return render(request, 'data/gdls.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
 
-def test1_page(request):
-    return render(request, 'r2n2/test2.html')
+def demp_page(request):
+    return render(request, 'data/demp.html')
+
+def sddc_page(request):
+    return render(request, 'data/sddc.html')
