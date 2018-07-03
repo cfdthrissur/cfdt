@@ -39,7 +39,21 @@ def gdls_page(request):
     return render(request, 'data/gdls.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
 
 def demp_page(request):
-    return render(request, 'data/demp.html')
+    lsgd_code = 'KL008M001'
+    data_entry_year = 2018
+    current_user = request.user
+
+    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q02").values('question_text')
+    lsgd_selected = Lsgd.objects.filter(lsgd_code = lsgd_code)
+
+    return render(request, 'data/demp.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
 
 def sddc_page(request):
-    return render(request, 'data/sddc.html')
+    lsgd_code = 'KL008M001'
+    data_entry_year = 2018
+    current_user = request.user
+
+    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q03").values('question_text')
+    lsgd_selected = Lsgd.objects.filter(lsgd_code = lsgd_code)
+
+    return render(request, 'data/sddc.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
