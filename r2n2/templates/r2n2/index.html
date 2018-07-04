@@ -1,6 +1,40 @@
 {% extends 'r2n2/base.html' %}
 
 
+{% block userinfo %}
+<!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="/static/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ current_user.first_name}} {{ current_user.last_name}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  {{ current_user.first_name}} {{ current_user.last_name}} 
+                  <small>{{ current_user.email}}</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-info btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/" class="btn btn-danger btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+		  
+		  
+{% endblock %}
+
 {% block content %}
 <section class="content">
 
@@ -9,8 +43,8 @@
         <!-- small box -->
            <a href="/gdls"> <div class="small-box bg-blue"> 
             <div class="inner">
-              <span class="info-box-number">Municipalities</span>
-              <p>Update Profile  </p> 
+              <span class="info-box-number">View LSGD</span>
+              <p>Testing  </p> 
 			  
             </div>
             <div class="icon">
@@ -23,10 +57,10 @@
 
         <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-           <a href="#"> <div class="small-box bg-green"> 
+           <a href="/data"> <div class="small-box bg-green"> 
             <div class="inner">
-              <span class="info-box-number">Municipalities</span>
-              <p>Update Profile  </p> 
+              <span class="info-box-number">Data Entry</span>
+              <p>Enter Details  </p> 
 			  
             </div>
             <div class="icon">
@@ -41,8 +75,8 @@
         <!-- small box -->
            <a href="#"> <div class="small-box bg-red"> 
             <div class="inner">
-              <span class="info-box-number">Municipalities</span>
-              <p>Update Profile  </p> 
+              <span class="info-box-number">Reports</span>
+              <p>Testing </p> 
 			  
             </div>
             <div class="icon">

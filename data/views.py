@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 
-from qbnk.models import QuestionBank
+from qbnk.models import QuestionBank, QuestionHeader
 from lsgd.models import Lsgd
 from data.models import D01_GeneralDetails
 
 from data.forms import DataForm01
+
 
 # Create your views here.
 def gdls_page(request):
@@ -12,7 +13,7 @@ def gdls_page(request):
     data_entry_year = 2018
     current_user = request.user
 
-    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q01").values('question_text')
+    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q01").values()
     lsgd_selected = Lsgd.objects.filter(lsgd_code = lsgd_code)
 
     questions_list = []
@@ -32,18 +33,57 @@ def gdls_page(request):
             data01.lsgd_no_of_wards = data_form01.cleaned_data['lsgd_no_of_wards']
             data01.lsgd_block_panchayath_wards = data_form01.cleaned_data['lsgd_block_panchayath_wards']
             data01.save()
+        
+        print(request.POST)
 
+        
     else:
         print("testing..")
 
     return render(request, 'data/gdls.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
+
+
+def data_page(request):
+    current_header = 1
+    lsgd_code = 'KL008M001'
+    data_entry_year = 2018
+    current_user = request.user
+
+    questions =  QuestionBank.objects.filter(question_code__startswith = "Q01").values()
+    headers = QuestionHeader.objects.all().values()
+    lsgd_selected = Lsgd.objects.filter(lsgd_code = lsgd_code)
+
+    if request.method == 'POST':
+        print(request.POST)
+        clicked_header = int(request.POST['clicked_header'])
+        if clicked_header > 20 and 'next_page' in request.POST:
+            current_header = clicked_header - 19
+            if current_header > 19:
+                current_header = 1
+        elif clicked_header > 20 and 'prev_page' in request.POST:
+            current_header = clicked_header - 21
+            if current_header < 1:
+                current_header = 19
+        elif clicked_header > 20 and 'save_details' in request.POST:
+            current_header = clicked_header - 20
+        else:
+            current_header = clicked_header
+        
+
+        current_questions = "Q0" + str(current_header)
+        questions =  QuestionBank.objects.filter(question_code__startswith = current_questions).values()
+
+    
+    return render(request, 'data/data.html', {'headers': headers, 'current_header': current_header, 'questions': questions, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
+
+
 
 def demp_page(request):
     lsgd_code = 'KL008M001'
     data_entry_year = 2018
     current_user = request.user
 
-    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q02").values('question_text')
+    questions_queryset =  QuestionBank.objects.filter(question_code__startswith = "Q02")
     lsgd_selected = Lsgd.objects.filter(lsgd_code = lsgd_code)
 
     return render(request, 'data/demp.html', {'questions': questions_queryset, 'lsgd_selected': lsgd_selected, 'data_entry_year': data_entry_year, 'current_user': current_user})
