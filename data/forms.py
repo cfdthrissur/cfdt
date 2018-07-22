@@ -1,8 +1,7 @@
 from django import forms
 
-
-class DataForm01(forms.Form):
-    lsgd_name = forms.CharField(max_length=100)
+class F001(forms.Form):
+    lsgd_name = forms.CharField(max_length=100, required = True)
     lsgd_year_of_formation = forms.IntegerField(required = False)
     lsgd_area_in_sqkm = forms.FloatField(required = False)
     lsgd_taluk_name = forms.CharField(max_length = 100, required = False)
@@ -14,7 +13,7 @@ class DataForm01(forms.Form):
     lsgd_no_of_scst_wards = forms.IntegerField(required = False)
     lsgd_no_of_rivers = forms.IntegerField(required = False)
     lsgd_name_of_rivers = forms.CharField(max_length = 200, required = False)
-    lsgd_coastal_line_length_in_km = forms.IntegerField(required = False)
+    lsgd_coastal_line_length_in_km = forms.FloatField(required = False)
     lsgd_forest_area_in_hectors = forms.FloatField(required = False)
     lsgd_type_of_soil = forms.CharField(max_length = 100, required = False)
     lsgd_main_roads = forms.CharField(max_length = 200, required = False)
@@ -23,5 +22,33 @@ class DataForm01(forms.Form):
     lsgd_jilla_panchayath_ward = forms.IntegerField(required = False)
     lsgd_block_panchayath_name = forms.CharField(max_length = 100, required = False)
     lsgd_block_panchayath_wards = forms.CharField(max_length = 100, required = False)
-    
 
+
+class F002(forms.Form):
+    population_male = forms.IntegerField(required = False)
+    population_female = forms.IntegerField(required = False)
+    population_male_sc = forms.IntegerField(required = False)
+    population_female_sc = forms.IntegerField(required = False)
+    population_male_st = forms.IntegerField(required = False)
+    population_female_st = forms.IntegerField(required = False)
+    children_0_to_6_age_male = forms.IntegerField(required = False)
+    children_0_to_6_age_female = forms.IntegerField(required = False)
+    children_0_to_6_age_male_sc = forms.IntegerField(required = False)
+    children_0_to_6_age_female_sc = forms.IntegerField(required = False)
+    children_0_to_6_age_male_st = forms.IntegerField(required = False)
+    children_0_to_6_age_female_st = forms.IntegerField(required = False)
+    children_6_to_10_age_male = forms.IntegerField(required = False)
+    children_6_to_10_age_female = forms.IntegerField(required = False)
+    children_0_to_18_age_male = forms.IntegerField(required = False)
+    children_0_to_18_age_female = forms.IntegerField(required = False)
+    literates_male = forms.IntegerField(required = False)
+    literates_female = forms.IntegerField(required = False)
+    migrant_labours_male = forms.IntegerField(required = False)
+    migrant_labours_female = forms.IntegerField(required = False)
+    migrant_labours_child_male = forms.IntegerField(required = False)
+    migrant_labours_child_female = forms.IntegerField(required = False)
+    third_gender_persons = forms.IntegerField(required = False)
+    household_all = forms.IntegerField(required = False)
+    household_sc = forms.IntegerField(required = False)
+    household_st = forms.IntegerField(required = False)
+    bpl_families = forms.IntegerField(required = False)
